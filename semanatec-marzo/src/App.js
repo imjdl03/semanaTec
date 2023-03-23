@@ -1,26 +1,23 @@
-import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { Button, Form } from 'react-bootstrap'
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <h1>Apoyo Países de Programas Internacionales</h1>
-        <Form>
-          <Form.Group controlID="insert-country" style={{padding: 30}}>
-          <Form.Label>Search Country</Form.Label>
-          <Form.Control type="text" placeholder="Insert Country Here" />
-          </Form.Group>
-          <Button variant="primary" type="search">
-            Search
-          </Button>
-        </Form>
-      </header>
-    </div>
-
+    <Router>
+      <div>
+        <section>
+          <Routes>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </section>
+      </div>
+    </Router>
   );
 }
 
