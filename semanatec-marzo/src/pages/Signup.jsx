@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "./Intro.css";
+import { Button, Form } from "react-bootstrap"
 
 const Signup = () => {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,24 +35,24 @@ const Signup = () => {
     <main>
       <section>
         <div>
-          <div>
-            <h1> Conutries for me! </h1>
-            <form>
-              <div>
-                <label htmlFor="email-address">Email address</label>
-                <input
+          <div className="color-overlay d-flex justify-content-center align-items-center">
+            <Form className="rounded p-4">
+            <h2> Countries for Me!</h2>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label htmlFor="email-address">Email Address</Form.Label>
+                <Form.Control
                   type="email"
                   label="Email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="Email address"
+                  placeholder="Email Address"
                 />
-              </div>
+              </Form.Group>
 
-              <div>
-                <label htmlFor="password">Password</label>
-                <input
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label htmlFor="password">Password</Form.Label>
+                <Form.Control
                   type="password"
                   label="Create password"
                   value={password}
@@ -57,16 +60,19 @@ const Signup = () => {
                   required
                   placeholder="Password"
                 />
-              </div>
+              </Form.Group>
 
-              <button type="submit" onClick={onSubmit}>
-                Sign up
-              </button>
-            </form>
+              <Form.Group>
+                <Button type="submit" onClick={onSubmit}>
+                  Sign Up
+                </Button>
+              </Form.Group>
 
-            <p>
-              Already have an account? <NavLink to="/login">Sign in</NavLink>
-            </p>
+              <Form.Text>              
+                Already have an account? <NavLink to="/login">Sign in</NavLink>
+              </Form.Text>
+            </Form>
+
           </div>
         </div>
       </section>

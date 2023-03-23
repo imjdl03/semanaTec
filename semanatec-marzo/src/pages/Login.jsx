@@ -3,8 +3,14 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import "./Intro.css";
+import { Button, Form } from "react-bootstrap"
+
 const Login = () => {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,25 +34,24 @@ const Login = () => {
     <>
       <main>
         <section>
-          <div>
-            <p> FocusApp </p>
-
-            <form>
-              <div>
-                <label htmlFor="email-address">Email address</label>
-                <input
+          <div className="color-overlay d-flex justify-content-center align-items-center">
+            <Form className="rounded p-4">
+              <h2> Welcome Back! </h2>
+              <Form.Group className="mb-3" controlId="loginBasicEmail">
+                <Form.Label htmlFor="email-address">Email Address</Form.Label>
+                <Form.Control
                   id="email-address"
                   name="email"
                   type="email"
                   required
-                  placeholder="Email address"
+                  placeholder="Email Address"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </div>
+              </Form.Group>
 
-              <div>
-                <label htmlFor="password">Password</label>
-                <input
+              <Form.Group className="mb-3" controlId="loginBasicPassword">
+                <Form.Label htmlFor="password">Password</Form.Label>
+                <Form.Control
                   id="password"
                   name="password"
                   type="password"
@@ -54,16 +59,15 @@ const Login = () => {
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-              </div>
+              </Form.Group>
 
-              <div>
-                <button onClick={onLogin}>Login</button>
-              </div>
-            </form>
-
-            <p className="text-sm text-white text-center">
+              <Form.Group>
+                <Button onClick={onLogin}>Login</Button>
+              </Form.Group>
+              <Form.Text>
               No account yet? <NavLink to="/signup">Sign up</NavLink>
-            </p>
+              </Form.Text>
+            </Form>
           </div>
         </section>
       </main>
