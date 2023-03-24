@@ -1,0 +1,9 @@
+.container {
+  margin: var(--default-margin);
+  padding: var(--default-padding);
+}
+
+.highlightColor {
+  background-color: yellow;
+  color: black;
+}
